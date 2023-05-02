@@ -1,4 +1,5 @@
-import { Treasure } from './treasure';
+import { collect } from '../treasureController';
+import { Treasure } from '../../models/treasure';
 
 var testTreasure: Treasure;
 
@@ -7,13 +8,13 @@ beforeEach(() => {
 });
 
 test('collect 1 treasure', () => {
-    testTreasure.collect();
+    collect(testTreasure);
     expect(testTreasure.amount).toBe(1);
 });
 
 test('collect too much treasures', () => {
-    testTreasure.collect();
-    testTreasure.collect();
-    testTreasure.collect();
+    collect(testTreasure);
+    collect(testTreasure);
+    collect(testTreasure);
     expect(testTreasure.amount).toBe(0);
 });

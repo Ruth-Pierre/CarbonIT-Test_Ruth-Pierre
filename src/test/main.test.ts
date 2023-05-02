@@ -1,12 +1,12 @@
 import fs from 'fs';
-import { processAdventurersMovement } from "./map/mapMovement";
-import { readInput, writeOutput } from "./map/mapParser";
-import { TreasureMap } from "./mapElements/treasureMap";
+import { processAdventurersMovement } from "../map/mapMovement";
+import { readInput, writeOutput } from "../map/mapParser";
+import { TreasureMap } from "../models/treasureMap";
 
 test('no adventurer map file', () => {
     var inputMap: TreasureMap | null = readInput('src/testFiles/mountainsAndTreasureMap.txt');
     
-    if (inputMap != null)
+    if (inputMap !== null)
     {
         processAdventurersMovement(inputMap);
         writeOutput('src/testFiles/mountainsAndTreasureMapOutput.txt', inputMap);
@@ -19,7 +19,7 @@ test('no adventurer map file', () => {
 test('single adventurer map file', () => {
     var inputMap: TreasureMap | null = readInput('src/testFiles/singleAdventurerMap.txt');
     
-    if (inputMap != null)
+    if (inputMap !== null)
     {
         processAdventurersMovement(inputMap);
         writeOutput('src/testFiles/singleAdventurerMapOutput.txt', inputMap);
@@ -32,7 +32,7 @@ test('single adventurer map file', () => {
 test('multiple adventurers map file', () => {
     var inputMap: TreasureMap | null = readInput('src/testFiles/multipleAdventurersMap.txt');
     
-    if (inputMap != null)
+    if (inputMap !== null)
     {
         processAdventurersMovement(inputMap);
         writeOutput('src/testFiles/multipleAdventurersMapOutput.txt', inputMap);
@@ -45,7 +45,7 @@ test('multiple adventurers map file', () => {
 test('treasure collect check map file', () => {
     var inputMap: TreasureMap | null = readInput('src/testFiles/tooMuchTreasureMap.txt');
     
-    if (inputMap != null)
+    if (inputMap !== null)
     {
         processAdventurersMovement(inputMap);
         writeOutput('src/testFiles/tooMuchTreasureMapOutput.txt', inputMap);

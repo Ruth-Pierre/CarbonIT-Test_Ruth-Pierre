@@ -12,15 +12,6 @@ export class Treasure
         this._amount = amount;
     }
 
-    // Subtract one treasure if any are left
-    public collect()
-    {
-        if (this._amount > 0)
-        {
-            this._amount--;
-        }
-    }
-
     public get posX()
     {
         return this._posX;
@@ -34,5 +25,10 @@ export class Treasure
     public get amount()
     {
         return this._amount;
+    }
+
+    public set amount(value: number)
+    {
+        this._amount = value;
     }
 }

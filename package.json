@@ -6,7 +6,7 @@
   "scripts": {
     "test": "jest",
     "build": "npx tsc --project tsconfig.build.json",
-    "start": "node src/main.js"
+    "start": "node dist/main.js"
   },
   "keywords": [],
   "author": "",

@@ -1,8 +1,9 @@
 import fs from 'fs';
-import { TreasureMap } from "../mapElements/treasureMap";
-import { Mountain } from '../mapElements/mountain';
-import { Treasure } from '../mapElements/treasure';
-import { Adventurer } from '../mapElements/adventurer';
+import { TreasureMap } from "../models/treasureMap";
+import { Mountain } from '../models/mountain';
+import { Treasure } from '../models/treasure';
+import { Adventurer } from '../models/adventurer';
+import { addAdventurer, addMountain, addTreasure } from '../controllers/treasureMapController';
 
 // Reads a text file and builds a TreasureMap object out of it
 export function readInput(filePath: string): TreasureMap | null
@@ -34,7 +35,7 @@ export function readInput(filePath: string): TreasureMap | null
 
         switch (splitLine[0]) {
             case 'C':
-                if (index != 0 || splitLine.length != 3)
+                if (index !== 0 || splitLine.length !== 3)
                 {
                     return null;
                 }
@@ -45,23 +46,23 @@ export function readInput(filePath: string): TreasureMap | null
                 break;
 
             case 'M':
-                if (index != 0 && splitLine.length == 3 && map != null)
+                if (index !== 0 && splitLine.length === 3 && map !== null)
                 {
-                    map.addMountain(new Mountain(Number.parseInt(splitLine[1]), Number.parseInt(splitLine[2])));
+                    addMountain(map, new Mountain(Number.parseInt(splitLine[1]), Number.parseInt(splitLine[2])));
                 }
                 break;
 
             case 'T':
-                if (index != 0 && splitLine.length == 4 && map != null)
+                if (index !== 0 && splitLine.length === 4 && map !== null)
                 {
-                    map.addTreasure(new Treasure(Number.parseInt(splitLine[1]), Number.parseInt(splitLine[2]), Number.parseInt(splitLine[3])));
+                    addTreasure(map, new Treasure(Number.parseInt(splitLine[1]), Number.parseInt(splitLine[2]), Number.parseInt(splitLine[3])));
                 }
                 break;
 
             case 'A':
-                if (index != 0 && splitLine.length == 6 && map != null)
+                if (index !== 0 && splitLine.length === 6 && map !== null)
                 {
-                    map.addAdventurer(new Adventurer(Number.parseInt(splitLine[2]), Number.parseInt(splitLine[3]), splitLine[4], splitLine[5], splitLine[1]))
+                    addAdventurer(map, new Adventurer(Number.parseInt(splitLine[2]), Number.parseInt(splitLine[3]), splitLine[4], splitLine[5], splitLine[1]))
                 }
 
             case '#':
@@ -95,7 +96,7 @@ export function writeOutput(filePath: string, map: TreasureMap)
     });
 
     map.adventurerList.forEach(adventurer => {
-        fileData += `\r\nA - ${adventurer.name} - ${adventurer.posX} - ${adventurer.posY} - ${adventurer.orientation} - ${adventurer.treasureCollected}`;
+        fileData += `\r\nA - ${adventurer.name} - ${adventurer.posX} - ${adventurer.posY} - ${adventurer.orientationRef[adventurer.orientation]} - ${adventurer.treasureCollected}`;
     });
 
     fs.writeFileSync(filePath, fileData);

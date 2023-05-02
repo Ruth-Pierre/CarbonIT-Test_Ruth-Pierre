@@ -17,21 +17,6 @@ export class TreasureMap
         this._height = height;
     }
 
-    public addMountain(mountain: Mountain)
-    {
-        this._mountainList.push(mountain);
-    }
-
-    public addTreasure(treasure: Treasure)
-    {
-        this._treasureList.push(treasure);
-    }
-
-    public addAdventurer(adventurer: Adventurer)
-    {
-        this._adventurerList.push(adventurer);
-    }
-
     // Getters
     public get width()
     {
