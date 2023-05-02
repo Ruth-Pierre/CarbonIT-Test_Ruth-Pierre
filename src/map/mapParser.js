@@ -25,7 +25,7 @@ function readInput(filePath) {
             throw err;
         }
     }
-    const wordList = words.split('\r\n');
+    const wordList = words.split(/[\r\n]+/);
     wordList.forEach((line, index) => {
         let splitLine = line.split(' - ');
         switch (splitLine[0]) {

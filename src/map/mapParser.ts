@@ -27,7 +27,7 @@ export function readInput(filePath: string): TreasureMap | null
         }
     }
 
-    const wordList: string[] = words.split('\r\n');
+    const wordList: string[] = words.split(/[\r\n]+/);
 
     wordList.forEach((line, index) => {
         let splitLine: string[] = line.split(' - ');
